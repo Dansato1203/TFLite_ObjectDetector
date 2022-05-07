@@ -49,13 +49,9 @@ RUN gdown "https://drive.google.com/uc?export=download&id=1k6Nc2xiwB9d2ZRD4LLCS8
 WORKDIR /src/models/research 
 RUN protoc object_detection/protos/*.proto --python_out=.
 
-RUN cp /src/models/research/object_detection/packages/tf1/setup.py . 
-RUN python3 -m pip install . 
-RUN python3 /src/models/research/object_detection/builders/model_builder_test.py
-
-#RUN wget http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8.tar.gz \
-#	&& tar -xf ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8.tar.gz \
-#	&& rm ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8.tar.gz
+RUN cp /src/models/research/object_detection/packages/tf1/setup.py . \
+	&& python3 -m pip install . \
+	&& python3 /src/models/research/object_detection/builders/model_builder_test.py
 
 WORKDIR /src/pretrained_model
 RUN wget http://download.tensorflow.org/models/object_detection/ssdlite_mobiledet_edgetpu_320x320_coco_2020_05_19.tar.gz \
@@ -63,14 +59,10 @@ RUN wget http://download.tensorflow.org/models/object_detection/ssdlite_mobilede
 
 WORKDIR /src/models/research 
 RUN git clone https://github.com/karaage0703/object_detection_tools
+RUN wget "https://drive.google.com/uc?export=download&id=1ULi7WDxfckXgWLIVTLdQ_ibpIjLms01T" -O tf_label_map.pbtxt \
+	&& cp tf_label_map.pbtxt /src/models/research/object_detection_tools/data/
 
-RUN wget "https://drive.google.com/uc?export=download&id=1ULi7WDxfckXgWLIVTLdQ_ibpIjLms01T" -O tf_label_map.pbtxt
-RUN cp tf_label_map.pbtxt /src/models/research/object_detection_tools/data/
-
-#RUN wget "https://drive.google.com/uc?export=download&id=1ReEP1J9Rei9LVsrfiLzStZYjYZcA6R4R" -O pipeline.config
-#RUN cp pipeline.config /src/models/research/ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8/
-
-RUN mkdir /src/train_result
+RUN mkdir -p /src/train_logs/inference_models
 
 COPY scripts/run_train.sh /src/
 COPY scripts/split_train_data.py /src/
