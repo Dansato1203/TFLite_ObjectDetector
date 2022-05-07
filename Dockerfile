@@ -64,9 +64,9 @@ RUN wget "https://drive.google.com/uc?export=download&id=1ULi7WDxfckXgWLIVTLdQ_i
 
 RUN mkdir -p /src/train_logs/inference_models
 
-COPY scripts/run_train.sh /src/
-COPY scripts/split_train_data.py /src/
-COPY scripts/fix_pipeline.py /src/
+COPY src/run_train.sh /src/
+COPY src/split_train_data.py /src/
+COPY src/fix_pipeline.py /src/
 
 WORKDIR /src/
 CMD ["/src/run_train.sh"]
