@@ -1,10 +1,9 @@
 import os
 import shutil
-import grob
+import glob
 import random
 
-
-original_data_dir = '/dataset'
+original_data_dir = '/src/origin_data'
 train_data_dir = '/src/models/research/train_data'
 val_data_dir = '/src/models/research/val_data'
 
