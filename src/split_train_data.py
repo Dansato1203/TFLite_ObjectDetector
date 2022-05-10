@@ -4,8 +4,8 @@ import glob
 import random
 
 original_data_dir = '/src/origin_data'
-train_data_dir = '/src/models/research/train_data'
-val_data_dir = '/src/models/research/val_data'
+train_data_dir = '/src/models/research/object_detection_tools/data/train'
+val_data_dir = '/src/models/research/object_detection_tools/data/val'
 
 shutil.rmtree(train_data_dir, ignore_errors=True)
 shutil.rmtree(val_data_dir, ignore_errors=True)
@@ -30,3 +30,5 @@ for index, filepath in enumerate(random_sample_list):
     else:
         # 検証データ(Validation data)
         shutil.copy2(filepath, val_data_dir)
+
+print("-------------File split done--------------")
