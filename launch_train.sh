@@ -1,5 +1,5 @@
 #!/bin/bash
-DOCKER_IMAGE="tf_ball_detection:latest"
+DOCKER_IMAGE="tf_ball_detection:yolov3"
 
 if ! command -v nvidia-smi &> /dev/null
 then
@@ -10,4 +10,4 @@ fi
 docker pull "$DOCKER_IMAGE"
 docker run --gpus=all -it --rm -e DISPLAY --privileged -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
 	--name tf_ball_detection \
-	$DOCKER_IMAGE
+	$DOCKER_IMAGE bash 

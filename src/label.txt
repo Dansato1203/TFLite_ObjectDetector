@@ -1,3 +1,0 @@
-0 Redball
-1 Blueball
-2 Yellowball
