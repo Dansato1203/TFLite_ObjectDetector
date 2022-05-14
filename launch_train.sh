@@ -10,4 +10,13 @@ fi
 docker pull "$DOCKER_IMAGE"
 docker run --gpus=all -it --rm -e DISPLAY --privileged -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
 	--name tf_ball_detection \
+	-v $PWD/train_logs:/src/train_logs:rw \
 	$DOCKER_IMAGE
+
+DOCKER_IMAGE="tf_ball_detection:convert_tflite"
+docker run --gpus=all -it --rm -e DISPLAY --privileged -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+	--name tf_ball_detection \
+	-v $PWD/train_logs:/src/train_logs:rw \
+	$DOCKER_IMAGE
+
+
