@@ -16,9 +16,9 @@ with tf.gfile.GFile(config_path, "r") as f:
 	text_format.Merge(proto_str, pipeline)
 
 pipeline.train_input_reader.tf_record_input_reader.input_path[:] = ['/src/models/research/train_data/*.tfrecord']
-pipeline.train_input_reader.label_map_path = '/src/models/research/object_detection_tools/data//tf_label_map.pbtxt'
+pipeline.train_input_reader.label_map_path = '/src/pretrained_model/pbtxt/tf_label_map.pbtxt'
 pipeline.eval_input_reader[0].tf_record_input_reader.input_path[:] = ['/src/models/research/val_data/*.tfrecord']
-pipeline.eval_input_reader[0].label_map_path = '/src/models/research/object_detection_tools/data/tf_label_map.pbtxt'
+pipeline.eval_input_reader[0].label_map_path = '/src/pretrained_model/pbtxt/tf_label_map.pbtxt'
 pipeline.train_config.fine_tune_checkpoint = '/src/pretrained_model/ssdlite_mobiledet_edgetpu_320x320_coco_2020_05_19/fp32/model.ckpt'
 pipeline.train_config.batch_size = BATCH_SIZE
 pipeline.train_config.num_steps = NUM_STEPS

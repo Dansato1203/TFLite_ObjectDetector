@@ -16,7 +16,7 @@ python3 /src/models/research/object_detection/export_inference_graph.py \
 	--trained_checkpoint_prefix=/src/train_logs/model.ckpt-1000
 
 python3 /src/models/research/object_detection/export_tflite_ssd_graph.py \
-	 --pipeline_config_path=/src/models/research/object_detection/samples/configs/ssdlite_mobiledet_edgetpu_320x320_coco_sync_4x4.config \
-	 --trained_checkpoint_prefix=/src/train_logs/model.ckpt-1000 \
-	 --output_directory=/src/train_logs \
-	 --add_postprocessing_op=true
+	--pipeline_config_path=/src/models/research/object_detection/samples/configs/ssdlite_mobiledet_edgetpu_320x320_coco_sync_4x4.config \
+	--trained_checkpoint_prefix=/src/train_logs/model.ckpt-1000 \
+	--output_directory=/src/train_logs/tflite \
+	--add_postprocessing_op=true

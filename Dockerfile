@@ -41,8 +41,8 @@ RUN pip3 install opencv-python \
 WORKDIR /src
 RUN git clone --depth 1 https://github.com/tensorflow/models 
 RUN gdown "https://drive.google.com/uc?export=download&id=1k6Nc2xiwB9d2ZRD4LLCS8ndCmPHWqBko" \
-	&& unzip origin_data.zip \
-	&& rm origin_data.zip 
+	&& unzip *.zip \
+	&& rm *.zip 
 
 
 WORKDIR /src/models/research 
@@ -55,12 +55,11 @@ RUN cp /src/models/research/object_detection/packages/tf1/setup.py . \
 WORKDIR /src/pretrained_model
 RUN wget http://download.tensorflow.org/models/object_detection/ssdlite_mobiledet_edgetpu_320x320_coco_2020_05_19.tar.gz \
 	&& tar xvf ssdlite_mobiledet_edgetpu_320x320_coco_2020_05_19.tar.gz
+RUN mkdir pbtxt \
+	&& wget "https://drive.google.com/uc?export=download&id=1ULi7WDxfckXgWLIVTLdQ_ibpIjLms01T" -O tf_label_map.pbtxt \
+	&& cp tf_label_map.pbtxt /src/pretrained_model/pbtxt/
 
 WORKDIR /src/models/research 
-RUN git clone https://github.com/karaage0703/object_detection_tools
-RUN wget "https://drive.google.com/uc?export=download&id=1ULi7WDxfckXgWLIVTLdQ_ibpIjLms01T" -O tf_label_map.pbtxt \
-	&& cp tf_label_map.pbtxt /src/models/research/object_detection_tools/data/
-
 RUN mkdir -p /src/train_logs/inference_models
 
 COPY src/run_train.sh /src/
