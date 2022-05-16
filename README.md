@@ -1,4 +1,4 @@
-# TFLite_ColorBallDetector
+# TFLite_ObjectDetector
 TensorflowのObject Detection APIを用いた物体検出  
 Google Colabratoryで実装していたのものが動作しなくなった(もろもろのバージョンが上がったせいっぽい)のでDockerで動作するよう整備しました．  
   
