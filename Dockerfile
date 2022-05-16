@@ -24,17 +24,15 @@ RUN curl -OL https://github.com/google/protobuf/releases/download/v3.2.0/protoc-
 	&& mv protoc3/include/* /usr/local/include/ \
 	&& rm -rf protoc3 protoc-3.2.0-linux-x86_64.zip
 
-RUN python3 -m pip install --upgrade pip 
-
-RUN pip3 install opencv-python \
+RUN pip3 install --upgrade pip \
+	cython \
+	gdown \
+	google-api-python-client \ 
+	&& pip3 install opencv-python \
 	-q tflite_support \
 	tf_slim \
 	git+https://github.com/waleedka/coco.git#subdirectory=PythonAPI \
-	pycocotools \
-	&& pip3 install --upgrade pip \
-	cython \
-	gdown \
-	google-api-python-client 
+	pycocotools
 
 WORKDIR /src
 RUN git clone --depth 1 https://github.com/tensorflow/models 
@@ -44,7 +42,6 @@ RUN gdown "https://drive.google.com/uc?export=download&id=19-kOt9khSikXOWVb5o5WC
 
 WORKDIR /src/models/research 
 RUN protoc object_detection/protos/*.proto --python_out=.
-
 RUN cp /src/models/research/object_detection/packages/tf1/setup.py . \
 	&& python3 -m pip install . \
 	&& python3 /src/models/research/object_detection/builders/model_builder_test.py
