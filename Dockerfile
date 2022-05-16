@@ -1,5 +1,3 @@
-#FROM nvidia/cuda:11.5.1-cudnn8-devel-ubuntu20.04
-#FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu18.04
 FROM nvcr.io/nvidia/tensorflow:22.04-tf1-py3
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -40,10 +38,9 @@ RUN pip3 install opencv-python \
 
 WORKDIR /src
 RUN git clone --depth 1 https://github.com/tensorflow/models 
-RUN gdown "https://drive.google.com/uc?export=download&id=1k6Nc2xiwB9d2ZRD4LLCS8ndCmPHWqBko" \
-	&& unzip *.zip \
+RUN gdown "https://drive.google.com/uc?export=download&id=19-kOt9khSikXOWVb5o5WCqd6_7j6FRuV" \
+	&& unzip *.zip -d tfrecord_data\
 	&& rm *.zip 
-
 
 WORKDIR /src/models/research 
 RUN protoc object_detection/protos/*.proto --python_out=.

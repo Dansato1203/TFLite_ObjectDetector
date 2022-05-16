@@ -3,7 +3,7 @@ import shutil
 import glob
 import random
 
-original_data_dir = '/src/origin_data'
+original_data_dir = '/src/tfrecord_data'
 train_data_dir = '/src/models/research/train_data'
 val_data_dir = '/src/models/research/val_data'
 
