@@ -25,7 +25,7 @@ Google Colabratoryで実装していたのものが動作しなくなった(も�
 2. 教師データのダウンロード元の変更  
 先で作成したtfrecordファイルをまとめてGoogle Drive等にアップロードし、共有リンクを取得してください．（リンクを知っている全員が見れる設定で）  
 以下のID部分(`1k6Nc2xiwB9d2ZRD4LLCS8ndCmPHWqBko`)を共有リンク内のファイルIDに変更してください．
-https://github.com/Dansato1203/TFLite_ColorBallDetector/blob/f72796942f82438cdadbf3614774b095580410ad/Dockerfile#L43  
+https://github.com/Dansato1203/TFLite_ObjectDetector/blob/f72796942f82438cdadbf3614774b095580410ad/Dockerfile#L43  
 </br>
 
 3. dokcer image の作成  
