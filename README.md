@@ -1,6 +1,6 @@
 # TFLite_ObjectDetector
 TensorflowのObject Detection APIを用いた物体検出  
-Google Colabratoryで実装していたのものが動作しなくなった(もろもろのバージョンが上がったせいっぽい)のでDockerで動作するよう整備しました．  
+
   
 ## 動作環境
 以下の環境で動作を確認しています．  
@@ -8,8 +8,6 @@ Google Colabratoryで実装していたのものが動作しなくなった(も�
 - CUDA: 11.0
 - cudnn: 8.0.5
 - Docker: 20.10.6
-
-追記: 研究室サーバ（ML3）でも動作を確認しました
 
 ## 学習
 以下の方法で学習を開始できます．  
