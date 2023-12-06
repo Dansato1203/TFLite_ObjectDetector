@@ -1,6 +1,11 @@
 # TFLite_ObjectDetector
 TensorflowのObject Detection APIを用いた物体検出  
-
+Raspberry Pi + Google Coral USB Acceleratorでの使用を目的とした軽量な物体検出モデルを作成します．
+</br>  
+<div align="center">
+<img src=https://github.com/Dansato1203/TFLite_ObjectDetector/assets/53420676/fcb9dc9f-388f-4e41-a249-ec62d3b19935, width=400px>
+</div>
+</br>
   
 ## 動作環境
 以下の環境で動作を確認しています．  
@@ -26,6 +31,7 @@ TensorflowのObject Detection APIを用いた物体検出
 https://github.com/Dansato1203/TFLite_ObjectDetector/blob/3d4e18a0c22ce4a7db328c2607635c2e67645082/Dockerfile#L39  
 </br>
 
+
 3. dokcer image の作成  
 以下のコマンドでdocker image を作成してください．  
 ```bash
@@ -39,6 +45,6 @@ $ ./launch_train.sh
 ```
 
 ### 補足
-- 手元にCoral Edge TPUがないのでラズパイ＋Coral での動作を確認できていません… (去年は動きました)  
+- 作成したモデルを[Edge TPU Compiler](https://coral.ai/docs/edgetpu/compiler/#download)によって変換することでRaspberry Pi4 model B　+ Google Coral USB Acceleratorによって25fps程度で検出できることを確認しています．
 - このディレクトリ内にできるtrain_logs内に訓練でできたモデル等が保存されています．  
   学習を再度行う際にはtrain_logsを削除（あるいは中身だけ削除）してください．
